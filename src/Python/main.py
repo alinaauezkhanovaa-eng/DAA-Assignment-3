@@ -333,5 +333,15 @@ def main():
             
         sys.stdout.flush()
 
+def test_route_helper():
+    edges_map = {0: (0, 1, 5), 1: (1, 2, 3), 2: (0, 2, 10)}
+    parent_edge = [-1, 0, 1]
+    path = GraphAlgorithms.route_helper(0, 2, parent_edge, edges_map)
+    assert path == [0, 1], f"Expected [0, 1], got {path}"
+    print("route_helper test passed successfully!")
+
 if __name__ == "__main__":
-    main()
+    if sys.stdin.isatty():
+        test_route_helper()
+    else:
+        main()
